@@ -32,7 +32,7 @@
 
                         <div>
                             <h5 class="card-title">About the Developer</h5>
-                            <p class="card-text">Ace Sarmiento Ogalesco coder na nalilimutan na may activity.</p>
+                            <p class="card-text">Ace Sarmiento Ogalesco po pala, coder na nalilimutan na may activity.</p>
                         </div>
                     </div>
                 </div>      

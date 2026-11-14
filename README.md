@@ -109,3 +109,13 @@ Q1 - well the file at the top is Laravels core, not my code. The error just bubb
 Q2 - the error page only shows what broke at that second. The log will tell me next month how often it happened, what data the user sent, which user ID, and the pattern before it broke. Error page is gone after refresh, log stays.
 
 Q3 - well the 403 is better for APIs, or when user really has no permission and shouldn't be able to retry like trying to access admin route. It's a hard stop. and the Redirect back with message is better for web UI like validation or trying to edit someone else's pet. User can fix it or understand why, better UX.
+
+
+LA13
+(ANSWERS)
+
+Q1 - the resource controllers index handles the listing of records and usually prepares the data for display. My HomeController only handles the home page.
+
+Q2 - the pagination links did not contain the search term. Because of this, the controller received no search value when moving to the next page. I fixed it using withQueryString().
+
+Q3 - the misspelled sort value silently falls back to the default instead of showing an error. My allowed list makes sure only code and units can be used for sorting.

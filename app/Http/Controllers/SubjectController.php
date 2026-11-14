@@ -9,45 +9,35 @@ use Illuminate\Support\Facades\Log;
 
 
 
+
 class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
 
-    public function index(Request $request)
-    {
-        $query = Subject::with('category');
-
-        $code = $request->query('code');
-        $units = $request->query('units');
-        $filter = $request->query('filter');
-
-        if ($code) {
-            $query = $query->where('code', $code);
-        }
-
-        if ($units && $units !== 'all') {
-            $query = $query->where('units', $units);
-        }
-
-        if ($filter) {
-            $query = $query->where('category_id', $filter);
-        }
-
    
+public function index(Request $request)
+{
+    $search = $request->query('search');
+    $sort = $request->query('sort', 'code');
 
-        $subjects = $query->paginate(3);
-
-        return view('subjects.index', compact('subjects'));
+    if (! in_array($sort, ['code', 'units'])) {
+        $sort = 'code';
     }
 
-    public function create()
-    {
-        $categories = Category::all();
+    $query = Subject::with('category');
 
-        return view('subjects.create', compact('categories'));
+    if ($search) {
+        $query = $query->where('subject', 'like', "%{$search}%");
+        $subjects = $query->paginate(3)->withQueryString();
     }
+
+    $subjects = $query->paginate(3)->withQueryString();
+
+    return view('subjects.index', compact('subjects', 'sort'));
+}
+
 
     public function store(Request $request)
     {

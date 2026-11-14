@@ -5,8 +5,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\HomeController;
 
 
-Route::get('/', [HomeController::class, 'index'])
-->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/subjects/filter/{value?}', function ($value = null) {
