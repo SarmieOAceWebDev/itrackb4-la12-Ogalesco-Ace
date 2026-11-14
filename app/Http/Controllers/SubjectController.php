@@ -17,7 +17,7 @@ class SubjectController extends Controller
 
     public function index(Request $request)
     {
-        $query = Subject::withh('category');
+        $query = Subject::with('category');
 
         $code = $request->query('code');
         $units = $request->query('units');
@@ -37,7 +37,7 @@ class SubjectController extends Controller
 
    
 
-        $subjects = $query->get();
+        $subjects = $query->paginate(3);
 
         return view('subjects.index', compact('subjects'));
     }

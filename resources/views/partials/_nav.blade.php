@@ -1,11 +1,24 @@
-<nav class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4 pb-3 border-bottom">
-    <div class="d-flex flex-wrap gap-2">
-        <a href="{{ route('subjects.index') }}" class="btn btn-primary">Subjects</a>
-        <a href="{{ route('subjects.index') }}" class="btn btn-outline-primary">All Subjects</a>
-        <a href="{{ route('subjects.index', ['code' => 'ITRACKB4']) }}" class="btn btn-outline-primary">ITRACKB4</a>
-    </div>
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ route('home') }}">Subject Management System</a>
 
-    @if (request()->routeIs('subjects.index'))
-        <a href="{{ route('subjects.create') }}" class="btn btn-success ms-auto">Add New Subject</a>
-    @endif
-</nav>s
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                       href="{{ route('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('subjects.*') ? 'active' : '' }}"
+                       href="{{ route('subjects.index') }}">Subjects</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

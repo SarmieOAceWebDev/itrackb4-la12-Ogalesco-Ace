@@ -91,7 +91,13 @@
         @endforelse
         </tbody>
     </table>
+
+
+
+
+
     </div>
     </div>
+{{{$subjects->links()}}}
 
 @endsection
